@@ -151,7 +151,7 @@
     <tr th:each="commit : ${commits.content}">
       <td th:text="${commit.hash}"></td>
       <td th:text="${commit.authorName}"></td>
-      <td th:text="${commit.timestamp}"></td>
+      <td th:text="${#temporals.format(commit.timestamp, 'yyyy-MM-dd HH:mm:ss')}"></td>
       <td th:text="${commit.platform}"></td>
       <td>
         <a th:href="@{/developer/commits/{id}(id=${commit.id})}">View Details</a>

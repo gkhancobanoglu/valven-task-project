@@ -86,7 +86,7 @@
     <p><span class="label">Author Name:</span> <span class="value" th:text="${commit.authorName}"></span></p>
     <p><span class="label">Author Email:</span> <span class="value" th:text="${commit.authorEmail}"></span></p>
     <p><span class="label">Platform:</span> <span class="value" th:text="${commit.platform}"></span></p>
-    <p><span class="label">Timestamp:</span> <span class="value" th:text="${commit.timestamp}"></span></p>
+    <p><span class="label">Timestamp:</span> <span class="value" th:text="${#temporals.format(commit.timestamp, 'yyyy-MM-dd HH:mm:ss')}"></span></p>
     <p><span class="label">Patch:</span></p>
     <pre class="patch-content" th:text="${commit.patch}"></pre>
   </div>
