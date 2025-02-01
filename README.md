@@ -34,6 +34,7 @@
    ```bash
    git clone https://github.com/kullanici-adiniz/commit-dashboard.git
    cd commit-dashboard
+   ```
   
 ### Veritabanını Ayarlayın
 
@@ -44,6 +45,7 @@
    spring.datasource.url=jdbc:mysql://localhost:3306/veritabanı adı
    spring.datasource.username=veritabani_kullanici_adi
    spring.datasource.password=veritabani_sifre
+   ```
 
 ## Uygulama Endpoints
 
