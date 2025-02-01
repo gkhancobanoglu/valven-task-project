@@ -4,6 +4,18 @@
 
 ---
 
+## Cronjob Bilgisi
+
+Bu proje, **cronjob** kullanılarak GitHub ve GitLab commitlerini otomatik olarak çekmektedir. Varsayılan olarak, cronjob her **saat başında** çalışacak şekilde ayarlanmıştır.
+
+Eğer cronjob çalışma zamanını değiştirmek isterseniz, `cron` paketinde bulunan **CommitCronJob** sınıfında yer alan cronjob ifadelerini düzenleyebilirsiniz.
+
+### Örnek
+Her saat başında çalışacak cronjob (varsayılan):
+```java
+@Scheduled(cron = "0 0 * * * ?") // Her saat başında çalışır
+```
+
 ## Özellikler
 
 - **GitHub** ve **GitLab** üzerinden commitleri otomatik olarak çekme.
@@ -34,6 +46,7 @@
    ```bash
    git clone https://github.com/kullanici-adiniz/commit-dashboard.git
    cd commit-dashboard
+   ```
   
 ### Veritabanını Ayarlayın
 
@@ -44,6 +57,7 @@
    spring.datasource.url=jdbc:mysql://localhost:3306/veritabanı adı
    spring.datasource.username=veritabani_kullanici_adi
    spring.datasource.password=veritabani_sifre
+   ```
 
 ## Uygulama Endpoints
 
@@ -66,7 +80,7 @@
 # Proje Görselleri
 
 ## Geliştirici Sayfası
-![Developer Page](src/main/resources/static/images/commit_detail.jpg)
+![Developer Page](src/main/resources/static/images/developer_page.jpg)
 
 ## Commit Listesi
 ![Commit List](src/main/resources/static/images/commit_list.jpg)
