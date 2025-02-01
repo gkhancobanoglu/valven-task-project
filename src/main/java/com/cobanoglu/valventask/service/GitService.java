@@ -10,6 +10,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -25,8 +26,6 @@ public class GitService {
     private final String githubOwner;
     private final String githubRepo;
 
-    //private static final String GITHUB_OWNER = "gnachman";
-    //private static final String GITHUB_REPO = "iTerm2";
 
     public GitService(CommitService commitService, DeveloperService developerService, GitConfig gitConfig) {
         this.restTemplate = new RestTemplate();
@@ -36,17 +35,10 @@ public class GitService {
         this.githubRepo = gitConfig.getGithubRepo();
     }
 
-    // Uygulama başladığında otomatik olarak commitleri çek
-    @PostConstruct
-    public void fetchAndSaveCommitsOnStartup() {
-        System.out.println("Fetching commits from GitHub...");
-        fetchAndSaveGitHubCommitsWithPatch();
-        System.out.println("Commit fetching completed.");
-    }
 
 
     // GitHub commitlerini patch bilgisiyle birlikte çek ve kaydet
-    private void fetchAndSaveGitHubCommitsWithPatch() {
+    public void fetchAndSaveGitHubCommitsWithPatch() {
         String url = buildGitHubApiUrl(githubOwner, githubRepo);
 
         try {

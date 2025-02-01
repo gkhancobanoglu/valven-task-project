@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.cobanoglu.valventask.model.Commit;
 import com.cobanoglu.valventask.model.Developer;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -30,13 +31,6 @@ public class GitLabService {
         this.authorName = gitConfig.getGitlabAuthorName();
     }
 
-    // Uygulama başlangıcında GitLab commitlerini çek ve kaydet
-    @PostConstruct
-    public void fetchAndSaveGitLabCommitsOnStartup() {
-        System.out.println("Fetching commits from GitLab...");
-        fetchAndSaveGitLabCommits();
-        System.out.println("GitLab commit fetching completed.");
-    }
 
     // GitLab'dan commitleri al ve kaydet
     public void fetchAndSaveGitLabCommits() {
