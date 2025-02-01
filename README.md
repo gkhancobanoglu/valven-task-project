@@ -68,7 +68,7 @@
 # Proje Görselleri
 
 ## Geliştirici Sayfası
-![Developer Page](src/main/resources/static/images/commit_detail.jpg)
+![Developer Page](src/main/resources/static/images/developer_page.jpg)
 
 ## Commit Listesi
 ![Commit List](src/main/resources/static/images/commit_list.jpg)
