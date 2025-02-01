@@ -36,7 +36,7 @@ Her saat başında çalışacak cronjob (varsayılan):
 - Commit listesi, sayfalara bölünerek daha düzenli bir görünüm sağlanmıştır.
 - Kullanıcı, her sayfada belirli sayıda commit görüntüleyebilir ve "Next/Previous" butonlarıyla sayfalar arasında gezinebilir.
 
-###Hata Yönetimi
+### Hata Yönetimi
 
 Projeye merkezi bir hata yönetimi sistemi eklendi.
 
