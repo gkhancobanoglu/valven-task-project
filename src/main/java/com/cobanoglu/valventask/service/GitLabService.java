@@ -64,7 +64,7 @@ public class GitLabService {
 
                     // Patch bilgisi al
                     String patch = fetchPatchFromGitLab(gitlabProjectId, commitNode.get("id").asText());
-                    if (patch != null && patch.length() > 5000) {
+                    if (patch != null && patch.length() > 10000) {
                         patch = patch.substring(0, 500);
                     }
                     commit.setPatch(patch);

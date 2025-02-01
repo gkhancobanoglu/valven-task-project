@@ -68,8 +68,8 @@ public class GitService {
                     String patch = fetchPatchData(commitDetailsUrl);
 
                     // Eğer patch boyutu 65.535 karakterden uzun ise kısalt
-                    if (patch != null && patch.length() > 5000) { // MySQL TEXT alanının maksimum boyutu
-                        patch = patch.substring(0, 500); // İlk 65.535 karakteri alın
+                    if (patch != null && patch.length() > 10000) { // MySQL TEXT alanının maksimum boyutu
+                        patch = patch.substring(0, 500); // İlk 500 karakteri alın
                     }
 
                     commit.setPatch(patch); // Patch bilgisini set et
