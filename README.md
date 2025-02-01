@@ -27,7 +27,17 @@ Her saat başında çalışacak cronjob (varsayılan):
   - Geliştirici bilgilerini görüntüleme.
 - Modüler ve ölçeklenebilir mimari ile kolay genişletilebilirlik.
 
----
+
+## Ekstra Özellikler
+
+### Filtreleme
+- Commit listesini platforma göre filtreleme özelliği eklenmiştir. 
+- Kullanıcı, "GitHub", "GitLab" veya "All" seçeneklerini seçerek yalnızca istediği platformdaki commitleri görüntüleyebilir.
+
+### Pagination
+- Commit listesi, sayfalara bölünerek daha düzenli bir görünüm sağlanmıştır.
+- Kullanıcı, her sayfada belirli sayıda commit görüntüleyebilir ve "Next/Previous" butonlarıyla sayfalar arasında gezinebilir.
+
 
 ## Kullanılan Teknolojiler
 
