@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Commit List</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #0056b3;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.9rem;
+    }
+
+    thead tr {
+      background-color: #0056b3;
+      color: #ffffff;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 12px;
+      border: 1px solid #ddd;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #eaf5ff;
+    }
+
+    a {
+      color: #0056b3;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: #00376b;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .pagination a {
+      margin: 0 5px;
+      padding: 8px 16px;
+      text-decoration: none;
+      background-color: #0056b3;
+      color: white;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    .pagination a:hover {
+      background-color: #00376b;
+    }
+
+    .pagination .active {
+      background-color: #00376b;
+      font-weight: bold;
+    }
+
+    .filter-form {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .filter-form label {
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    .filter-form select {
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      margin-right: 10px;
+    }
+
+    .filter-form button {
+      background-color: #0056b3;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .filter-form button:hover {
+      background-color: #00376b;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Recent Commits</h1>
+
+  <form action="/developer/commits" method="get" style="margin-bottom: 20px;">
+    <label for="platform">Filter by Platform:</label>
+    <select id="platform" name="platform">
+      <option value="" th:selected="${platform == null || platform.isEmpty()}">All</option>
+      <option value="GitHub" th:selected="${platform == 'GitHub'}">GitHub</option>
+      <option value="GitLab" th:selected="${platform == 'GitLab'}">GitLab</option>
+    </select>
+    <button type="submit">Filter</button>
+  </form>
+
+
+  <table>
+    <thead>
+    <tr>
+      <th>Hash</th>
+      <th>Author Name</th>
+      <th>Timestamp</th>
+      <th>Platform</th>
+      <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="commit : ${commits.content}">
+      <td th:text="${commit.hash}"></td>
+      <td th:text="${commit.authorName}"></td>
+      <td th:text="${commit.timestamp}"></td>
+      <td th:text="${commit.platform}"></td>
+      <td>
+        <a th:href="@{/developer/commits/{id}(id=${commit.id})}">View Details</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination -->
+  <div class="pagination">
+    <a th:if="${commits.hasPrevious()}" th:href="@{/developer/commits(page=${commits.number - 1}, platform=${platform})}">&laquo; Previous</a>
+    <span th:each="page : ${#numbers.sequence(0, commits.totalPages - 1)}">
+    <a th:class="${page == commits.number} ? 'active'" th:href="@{/developer/commits(page=${page}, platform=${platform})}" th:text="${page + 1}"></a>
+  </span>
+    <a th:if="${commits.hasNext()}" th:href="@{/developer/commits(page=${commits.number + 1}, platform=${platform})}">Next &raquo;</a>
+  </div>
+
+
+  <div class="back-link">
+    <a href="/developer">Back to Home</a>
+  </div>
+</div>
+</body>
+</html>

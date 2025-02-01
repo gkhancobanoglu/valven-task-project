@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Commit Details</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    h1 {
+      color: #0056b3;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .commit-info {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .commit-info p {
+      margin: 10px 0;
+    }
+
+    .commit-info span.label {
+      font-weight: bold;
+      color: #0056b3; /* Mavi renk başlık */
+    }
+
+    .commit-info span.value {
+      color: #333; /* Siyah renk içerik */
+    }
+
+    .patch-content {
+      background-color: #f4f4f4;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      color: #2c3e50;
+      border: 1px solid #ddd;
+    }
+
+    .back-link {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .back-link a {
+      background-color: #0056b3;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .back-link a:hover {
+      background-color: #00376b;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Commit Details</h1>
+  <div class="commit-info">
+    <p><span class="label">Hash:</span> <span class="value" th:text="${commit.hash}"></span></p>
+    <p><span class="label">Message:</span> <span class="value" th:text="${commit.message}"></span></p>
+    <p><span class="label">Author Name:</span> <span class="value" th:text="${commit.authorName}"></span></p>
+    <p><span class="label">Author Email:</span> <span class="value" th:text="${commit.authorEmail}"></span></p>
+    <p><span class="label">Platform:</span> <span class="value" th:text="${commit.platform}"></span></p>
+    <p><span class="label">Timestamp:</span> <span class="value" th:text="${commit.timestamp}"></span></p>
+    <p><span class="label">Patch:</span></p>
+    <pre class="patch-content" th:text="${commit.patch}"></pre>
+  </div>
+  <div class="back-link">
+    <a href="/developer/commits">Back to Commit List</a>
+  </div>
+</div>
+</body>
+</html>
