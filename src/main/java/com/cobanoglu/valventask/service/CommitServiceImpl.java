@@ -1,5 +1,6 @@
 package com.cobanoglu.valventask.service;
 
+import com.cobanoglu.valventask.exception.ResourceNotFoundException;
 import com.cobanoglu.valventask.model.Commit;
 import com.cobanoglu.valventask.model.Developer;
 import com.cobanoglu.valventask.repository.CommitRepository;
@@ -34,7 +35,8 @@ public class CommitServiceImpl implements CommitService {
 
     @Override
     public Commit getCommitById(Long id) {
-        return commitRepository.findById(id).orElse(null);
+        return commitRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Commit with ID " + id + " not found!"));
     }
 
     @Override
