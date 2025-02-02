@@ -19,13 +19,11 @@ Her saat başında çalışacak cronjob (varsayılan):
 ## Özellikler
 
 - **GitHub** ve **GitLab** üzerinden commitleri otomatik olarak çekme.
-- Commitleri yazar veya tarih aralığına göre filtreleme.
 - Commit metadatalarını veritabanına kaydetme.
 - **Thymeleaf** ile:
   - Commit detaylarını görüntüleme.
   - Son commitleri listeleme.
   - Geliştirici bilgilerini görüntüleme.
-- Modüler ve ölçeklenebilir mimari ile kolay genişletilebilirlik.
 
 
 ## Ekstra Özellikler
@@ -38,6 +36,16 @@ Her saat başında çalışacak cronjob (varsayılan):
 - Commit listesi, sayfalara bölünerek daha düzenli bir görünüm sağlanmıştır.
 - Kullanıcı, her sayfada belirli sayıda commit görüntüleyebilir ve "Next/Previous" butonlarıyla sayfalar arasında gezinebilir.
 
+### Hata Yönetimi
+
+Projeye merkezi bir hata yönetimi sistemi eklendi.
+
+- **Global Exception Handling:** Tüm hatalar tek bir yapı üzerinden ele alınıyor.
+- **Hata Türleri:**
+  - `ResourceNotFoundException`: Kaynak bulunamadığında (`404 Not Found`).
+  - `ApiException`: API hataları için (`400 Bad Request`).
+  - Genel hatalar için (`500 Internal Server Error`).
+- **Kullanıcı Dostu Mesajlar:** Anlaşılır hata mesajları ile kullanıcı bilgilendiriliyor.
 
 ## Kullanılan Teknolojiler
 
