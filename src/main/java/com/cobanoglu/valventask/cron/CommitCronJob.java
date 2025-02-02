@@ -34,4 +34,7 @@ public class CommitCronJob {
 
     // Eğer ayda bir çalıştırmak isterseniz, cron expression'ı değiştirin:
     // @Scheduled(cron = "0 0 0 1 * ?") // Her ayın ilk günü saat 00:00'da çalışır
+
+    // Her dakika başında çalıştırır
+    // @Scheduled(cron = "0 * * * * ?")
 }

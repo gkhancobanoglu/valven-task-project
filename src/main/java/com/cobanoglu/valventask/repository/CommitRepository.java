@@ -13,12 +13,6 @@ import java.util.List;
 @Repository
 public interface CommitRepository extends JpaRepository<Commit, Long> {
 
-    // Belirli bir geliştiricinin commitlerini getirir
-    List<Commit> findByDeveloperId(Long developerId);
-
-    // Belirli bir platformdaki commitleri getirir (GitHub, GitLab gibi)
-    List<Commit> findByPlatform(String platform);
-
     // Belirli bir tarihten sonra oluşturulmuş commitleri getirir
     List<Commit> findByTimestampAfter(LocalDateTime oneMonthAgo);
 

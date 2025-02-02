@@ -22,11 +22,6 @@ public class CommitServiceImpl implements CommitService {
         this.commitRepository = commitRepository;
     }
 
-    @Override
-    public List<Commit> getCommitsLastMonth() {
-        LocalDateTime oneMonthAgo = LocalDateTime.now().minusMonths(1);
-        return commitRepository.findByTimestampAfter(oneMonthAgo);
-    }
 
     @Override
     public Commit saveCommit(Commit commit) {
@@ -37,16 +32,6 @@ public class CommitServiceImpl implements CommitService {
     public Commit getCommitById(Long id) {
         return commitRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Commit with ID " + id + " not found!"));
-    }
-
-    @Override
-    public List<Commit> getCommitsByDeveloper(Developer developer) {
-        return commitRepository.findByDeveloper(developer);
-    }
-
-    @Override
-    public Page<Commit> getCommits(Pageable pageable) {
-        return commitRepository.findAll(pageable);
     }
 
     @Override

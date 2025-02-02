@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 public interface DeveloperRepository extends JpaRepository<Developer, Long> {
 
     // Kullanıcı adını kullanarak geliştiriciyi getirir
-    Developer findByUsername(String username);
+    // Developer findByUsername(String username);
 
     // E-posta adresine göre geliştiriciyi getirir
-    Developer findByEmail(String email);
+    // Developer findByEmail(String email);
 }
